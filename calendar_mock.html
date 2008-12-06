@@ -79,8 +79,7 @@
     }
     
     Date.prototype.getDaysInLastMonth = function() {
-      var lastMonth = this;
-      lastMonth.setMonth(this.getMonth() - 1);
+      var lastMonth = new Date(this.getYear(), this.getMonth() - 1);
       return lastMonth.getDaysInMonth();
     }
     
@@ -129,10 +128,14 @@
           html += "<tr>";
           for(var j = 0; j < columns; j ++) {
             var index = (i * columns) + j;
-            day = index < offset ? daysInLastMonth - offset + index : index - offset + 1;
+            
+            // Calculate day
+            var day = index < offset ? daysInLastMonth - offset + index : index - offset;
             if(day > daysInMonth) {
-              day = index - daysInMonth - offset + 1;
+              day = index - daysInMonth - offset;
             }
+            day += 1;
+            
             html += "<td>" + day + "</td>";
           }
           html += "</tr>"
