@@ -9,43 +9,21 @@
         body {
           color: #222;
           font: 10pt "Lucida Grande", Verdana, Arial, sans-serif;
-          margin: 0 auto;
+          margin: 4em auto;
           width: 280px;
         }
         
-        a {
-          text-decoration: none;
-        }
-        
-          a:link, a:visited {
-            color: #0086FF;
-          }
-          
-          a:hover {
-            color: #FF5C07;
-          }
-          
-          a:active {
-            color: #991100;
-          }
-          
-        h1, h2 {
+        h1 {
+          color: #00538d;
+          font-size: 1em;
           margin: 0;
           text-transform: uppercase;
           text-align: center;
         }
-        
-        h1 {
-          font-size: 1em;
-        }
-        
-        h2 {
-          font-size: 1.2em;
-        }
           
         table {
           border-collapse: collapse;
-          border-color: #ccc;
+          border-color: #999;
           border-style: solid;
           border-width: 2px 0;
           margin: 0.5em 0;
@@ -69,13 +47,32 @@
         }
         
         .streak {
+          color: #999;
+          font-size: 0.6em;
+          font-weight: bold;
+          text-align: center;
+          text-transform: uppercase;
+        }
+        
+          .streak .count {
+            color: #666;
+            font-size: 2em;
+            font-weight: bold;
+            vertical-align: middle;
+          }
+          
+          .streak .type {
+            display: block;
+          }
+        
+        .current {
           float: left;
-          font-size: 0.9em;
-          width: 50%;
+          margin-left: 1em;
         }
         
         .longest {
-          text-align: right;
+          float: right;
+          margin-right: 1em;
         }
         
       -->
@@ -132,6 +129,13 @@
     Date.prototype.getDaysInLastMonth = function() {
       var lastMonth = new Date(this.getYear(), this.getMonth() - 1);
       return lastMonth.getDaysInMonth();
+    }
+    
+    // Helpers
+    function pluralize(num, word, pluralized_word) {
+      string = '<span class="count">' + num + "</span> ";
+      string += num == 1 ? word : (typeof pluralized_word == 'undefined' ? word + 's' : pluralized_word);
+      return string;
     }
     
     // MonthCalendar Object
@@ -211,8 +215,8 @@
     
     var html = '<h1>' + calendar.date.getMonthName() + ' ' +  calendar.year + '</h1>';
     html += calendar.getHTML();
-    html += '<div class="current streak">' + jsondata.current_streak + ' days</div>';
-    html += '<div class="longest streak">' + jsondata.longest_streak + ' days</div>';
+    html += '<div class="current streak"><span class="type">Current Streak</span> ' + pluralize(jsondata.current_streak, 'day') + '</div>';
+    html += '<div class="longest streak"><span class="type">Longest Streak</span> ' + pluralize(jsondata.longest_streak, 'day') + '</div>';
     
     updateContent(html)
     
