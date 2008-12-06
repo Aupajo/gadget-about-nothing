@@ -130,11 +130,10 @@
             var index = (i * columns) + j;
             
             // Calculate day
-            var day = index < offset ? daysInLastMonth - offset + index : index - offset;
-            if(day > daysInMonth) {
-              day = index - daysInMonth - offset;
+            var day = (index < offset ? daysInLastMonth - offset + index : index - offset) + 1;
+            if(index > offset && day > daysInMonth) {
+              day = index - daysInMonth - offset + 1;
             }
-            day += 1;
             
             html += "<td>" + day + "</td>";
           }
