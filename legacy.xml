@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs directory_title="Calendar About Nothing"
+    title="__UP_username__'s Calendar About Nothing"
+    description="Shows a user's open source contribution from Calendar About Nothing."
+    author="Aupajo"
+    author_email="pete@metanation.com"
+    height="60">
+    <Require feature="dynamic-height"/>
+    <Require feature="analytics" /> 
+  </ModulePrefs>
+  <UserPref name="username" required="true" datatype="string" display_name="Account Name" />
+  <Content type="html">
+    <![CDATA[
+      
+      <style type="text/css">
+        
+        a { text-decoration: none; }
+          
+          a:link, a:visited { color: #4183C4; }
+          
+          a:hover { text-decoration: underline; }
+       
+        
+        #content { 
+          font-size: 0.8em;
+          padding: 0.5em 0;
+        }
+        
+      </style>
+      
+      <div id="content">Loading&hellip;</div>
+      
+      <script type="text/javascript">
+        
+        function makeJSONRequest() {
+          updateContent("Attempting to retrieve account information&hellip;");
+          
+          var prefs = new _IG_Prefs();
+        
+          var url = "http://calendaraboutnothing.com/~" + _esc(prefs.getString('username')) + ".json";
+          _IG_FetchContent(url, response);
+          _IG_Analytics('UA-436998-2', '/legacy-gadget-about-nothing');
+         };
+        
+        function updateContent(html) {
+          document.getElementById('content').innerHTML = html;
+          _IG_AdjustIFrameHeight();
+        }
+        
+        function response(responseText) {
+          
+          if(responseText == null) {
+            updateContent('No calendar information found for <b>' + _esc(prefs.getString('username')) + '</b>.');
+          } else {
+            var jsondata = eval('(' + responseText + ')');
+            var prefs = new _IG_Prefs();
+            
+            html = responseText;
+        
+            updateContent(html);
+          }
+        }
+         
+         _IG_RegisterOnloadHandler(makeJSONRequest);
+         
+      </script>
+        
+    ]]>
+  </Content>
+</Module>
