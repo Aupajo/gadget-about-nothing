@@ -29,15 +29,53 @@
             color: #991100;
           }
           
+        h1, h2 {
+          margin: 0;
+          text-transform: uppercase;
+          text-align: center;
+        }
+        
+        h1 {
+          font-size: 1em;
+        }
+        
+        h2 {
+          font-size: 1.2em;
+        }
+          
         table {
           border-collapse: collapse;
+          border-color: #ccc;
+          border-style: solid;
+          border-width: 2px 0;
+          margin: 0.5em 0;
           width: 100%;
         }
         
-        
+          td, th {
+            text-align: center;
+            padding: 0.3em 0;
+          }
+          
+          th {
+            border-bottom: 1px solid #ccc;
+            color: #666;
+            font-size: 0.9em;
+            text-transform: uppercase;
+          }
           
         .outside_range {
           color: #ccc;
+        }
+        
+        .streak {
+          float: left;
+          font-size: 0.9em;
+          width: 50%;
+        }
+        
+        .longest {
+          text-align: right;
         }
         
       -->
@@ -98,7 +136,6 @@
     
     // MonthCalendar Object
     function MonthCalendar(mnth, yr) {
-      this.title = "";
       this.month = mnth ? mnth - 1 : new Date().getMonth();
       this.year = yr ? yr : new Date().getFullYear();
       this.day = 1;
@@ -114,10 +151,6 @@
         for(var dateString in arrayOfDateStrings) {
           this.markDate(dateString);
         }
-      }
-      
-      this.setTitle = function(name) {
-        this.title = name;
       }
       
       this.getHTML = function() {
@@ -174,14 +207,12 @@
     
     // Generate Calendar
     var calendar = new MonthCalendar(11, 2008);
-    calendar.setTitle(prefs.getString('username') + "'s Calendar");
     calendar.markDates(jsondata.days);
     
-    var html = '<h1>' + calendar.title + '</h1>';
-    html += '<h2>' + calendar.date.getMonthName() + ' ' +  calendar.year + '</h2>';
+    var html = '<h1>' + calendar.date.getMonthName() + ' ' +  calendar.year + '</h1>';
     html += calendar.getHTML();
-    html += '<div class="streak">Current Streak: ' + jsondata.current_streak + ' days</div>';
-    html += '<div class="streak">Longest Streak: ' + jsondata.longest_streak + ' days</div>';
+    html += '<div class="current streak">' + jsondata.current_streak + ' days</div>';
+    html += '<div class="longest streak">' + jsondata.longest_streak + ' days</div>';
     
     updateContent(html)
     
