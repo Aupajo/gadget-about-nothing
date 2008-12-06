@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>Calendar About Nothing</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style type="text/css">
+      <!-- 
+        
+        body {
+          color: #222;
+          font: 10pt "Lucida Grande", Verdana, Arial, sans-serif;
+        }
+        
+        a {
+          text-decoration: none;
+        }
+        
+          a:link, a:visited {
+            color: #0086FF;
+          }
+          
+          a:hover {
+            color: #FF5C07;
+          }
+          
+          a:active {
+            color: #991100;
+          }
+        
+      -->
+    </style>
+  </head>
+  <body>
+  
+  <div id="content"></div>  
+  
+  <script type="text/javascript">
+    
+    // Mock prefs
+    var prefs = {
+      username: "Aupajo",
+      getString: function(key) {
+        return this[key];
+      }
+    };
+    
+    // Mock functions
+    function updateContent(html) {
+      document.getElementById('content').innerHTML = html;
+    }
+    
+    // Mock data
+    var jsondata = {
+      "current_streak": 1,
+      "longest_streak": 2,
+      "days": [
+        "2008-11-30",
+        "2008-11-21",
+        "2008-11-22",
+        "2008-11-28"
+        ]
+      };
+    
+    // Extend Date
+    Date.prototype.getMonthName = function() {
+      var names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      return names[this.getMonth()];
+    }
+    
+    Date.dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    
+    Date.prototype.getDayName = function() {
+      return this.dayNames[this.getDay()];
+    }
+    
+    Date.prototype.getDaysInMonth = function() {
+      // If you deliberately overflow the days, you can check the overlap into the next month
+      return 32 - new Date(this.getYear(), this.getMonth(), 32).getDate();
+    }
+    
+    // MonthCalendar Object
+    function MonthCalendar(mnth, yr) {
+      this.title = "";
+      this.month = mnth ? mnth - 1 : new Date().getMonth();
+      this.year = yr ? yr : new Date().getFullYear();
+      this.date = new Date(this.year, this.month);
+      
+      // Methods
+      this.markDate = function(dateString) {
+        // TODO write markDate
+      }
+      
+      this.markDates = function(arrayOfDateStrings) {
+        for(var dateString in arrayOfDateStrings) {
+          this.markDate(dateString);
+        }
+      }
+      
+      this.setTitle = function(name) {
+        this.title = name;
+      }
+      
+      this.getHTML = function() {
+        var html = "<table>";
+        // Days of the week
+        html += "<tr>";
+        for(var dayName in Date.dayNames) {
+          html += "<th>" + Date.dayNames[dayName] + "</th>";
+        }
+        html += "</tr>";
+        // Calendar itself
+        // TODO 
+        html += "</table>";
+        return html;
+      }
+      
+    }
+    
+    // Generate Calendar
+    var calendar = new MonthCalendar(11, 2008);
+    calendar.setTitle(prefs.getString('username') + "'s Calendar");
+    calendar.markDates(jsondata.days);
+    
+    var html = '<h1>' + calendar.title + '</h1>';
+    html += '<h2>' + calendar.date.getMonthName() + '</h2>';
+    html += calendar.getHTML();
+    html += '<div class="streak">Current Streak: ' + jsondata.current_streak + ' days</div>';
+    html += '<div class="streak">Longest Streak: ' + jsondata.longest_streak + ' days</div>';
+    
+    updateContent(html)
+    
+  </script>
+    
+  </body>
+</html>
