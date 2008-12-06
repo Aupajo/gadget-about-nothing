@@ -26,6 +26,10 @@
           a:active {
             color: #991100;
           }
+          
+        .outside_range {
+          color: #ccc;
+        }
         
       -->
     </style>
@@ -127,19 +131,28 @@
         for(var i = 0; i < rows; i ++) {
           html += "<tr>";
           for(var j = 0; j < columns; j ++) {
-            var day, index = (i * columns) + j;
+            var classes, day, index;
+            classes = [];
+            index = (i * columns) + j;
             
             // Calculate day
             if(index < offset) {
+              classes.push('outside_range');
               day = daysInLastMonth - offset + index;
             } else if(index - offset + 1 > daysInMonth) {
+              classes.push('outside_range');
               day = index - daysInMonth - offset;
             } else { 
               day = index - offset;
             }
             day += 1;
             
-            html += "<td>" + day + "</td>";
+            // Markup
+            html += "<td"
+            if(classes.length > 0) {
+              html += ' class="' + classes.join(" ") + '"';
+            }
+            html += ">" + day + "</td>";
           }
           html += "</tr>"
         }
