@@ -180,8 +180,6 @@
     var html = '<h1>' + calendar.title + '</h1>';
     html += '<h2>' + calendar.date.getMonthName() + ' ' +  calendar.year + '</h2>';
     html += calendar.getHTML();
-    html += 'Days in month: ' + calendar.date.getDaysInMonth();
-    html += ' Days in last month: ' + calendar.date.getDaysInLastMonth();
     html += '<div class="streak">Current Streak: ' + jsondata.current_streak + ' days</div>';
     html += '<div class="streak">Longest Streak: ' + jsondata.longest_streak + ' days</div>';
     
