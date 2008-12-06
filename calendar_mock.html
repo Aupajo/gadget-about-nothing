@@ -41,6 +41,10 @@
             font-size: 0.9em;
             text-transform: uppercase;
           }
+        
+        .marked {
+          color: #f00;
+        }
           
         .outside_range {
           color: #ccc;
@@ -148,12 +152,15 @@
       
       // Methods
       this.markDate = function(dateString) {
-        // TODO write markDate
+        var mark = dateString.split("-");
+        if(mark[0] == this.year && mark[1] - 1 == this.month) {
+          this.marks[mark[2]] = true;
+        }
       }
       
       this.markDates = function(arrayOfDateStrings) {
         for(var dateString in arrayOfDateStrings) {
-          this.markDate(dateString);
+          this.markDate(arrayOfDateStrings[dateString]);
         }
       }
       
@@ -192,6 +199,10 @@
               day = index - offset;
             }
             day += 1;
+            
+            if(this.marks[day] == true) {
+              classes.push("marked");
+            }
             
             // Markup
             html += "<td"
