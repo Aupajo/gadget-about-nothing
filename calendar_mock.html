@@ -127,13 +127,17 @@
         for(var i = 0; i < rows; i ++) {
           html += "<tr>";
           for(var j = 0; j < columns; j ++) {
-            var index = (i * columns) + j;
+            var day, index = (i * columns) + j;
             
             // Calculate day
-            var day = (index < offset ? daysInLastMonth - offset + index : index - offset) + 1;
-            if(index > offset && day > daysInMonth) {
-              day = index - daysInMonth - offset + 1;
+            if(index < offset) {
+              day = daysInLastMonth - offset + index;
+            } else if(index - offset + 1 > daysInMonth) {
+              day = index - daysInMonth - offset;
+            } else { 
+              day = index - offset;
             }
+            day += 1;
             
             html += "<td>" + day + "</td>";
           }
