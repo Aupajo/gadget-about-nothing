@@ -10,17 +10,12 @@
     <Require feature="analytics" /> 
   </ModulePrefs>
   <UserPref name="username" required="true" datatype="string" display_name="Account Name" />
+  <UserPref name="show_month_name" default_value="true" datatype="bool" display_name="Show Month Name" />
+  <UserPref name="show_streaks" default_value="false" datatype="bool" display_name="Show Streaks" />
   <Content type="html">
     <![CDATA[
       
       <style type="text/css">
-        
-        a { text-decoration: none; }
-          
-          a:link, a:visited { color: #4183C4; }
-          
-          a:hover { text-decoration: underline; }
-       
         
         #content { 
           font-size: 0.8em;
