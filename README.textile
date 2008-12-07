@@ -1,10 +1,10 @@
 h1. Gadget About Nothing
 
+!>http://labs.metanation.com/gadget-about-nothing/screenshot.gif(Screenshot)!
+
 An iGoogle gadget for displaying a user's "Calendar About Nothing":http://calendaraboutnothing.com.
 
 "Add to iGoogle":http://www.google.co.nz/ig/adde?hl=en&moduleurl=http://labs.metanation.com/gadget-about-nothing/legacy.xml&source=imag
-
-!http://labs.metanation.com/gadget-about-nothing/screenshot.gif!
 
 h2. Licence
 
