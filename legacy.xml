@@ -23,7 +23,7 @@
         }
         
         h1 {
-          color: #00538d;
+          color: #4183c4;
           font-size: 1.2em;
           margin: 0;
           text-transform: uppercase;
@@ -32,9 +32,10 @@
           
         table {
           border-collapse: collapse;
-          border-color: #999;
+          border-color: #d4e6fc;
           border-style: solid;
           border-width: 2px 0;
+          color: #536880;
           margin: 0.5em 0;
           width: 100%;
         }
@@ -46,8 +47,8 @@
           }
           
           th {
-            border-bottom: 1px solid #ccc;
-            color: #666;
+            border-bottom: 1px solid #d4e6fc;
+            color: #4183c4;
             text-transform: uppercase;
           }
         
