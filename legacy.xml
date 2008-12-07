@@ -32,7 +32,7 @@
           
         table {
           border-collapse: collapse;
-          border-color: #d4e6fc;
+          border-color: #bdcad8;
           border-style: solid;
           border-width: 2px 0;
           color: #536880;
@@ -47,7 +47,7 @@
           }
           
           th {
-            border-bottom: 1px solid #d4e6fc;
+            border-bottom: 1px solid #bdcad8;
             color: #4183c4;
             text-transform: uppercase;
           }
@@ -75,7 +75,7 @@
         }
         
           .streak .count {
-            color: #666;
+            color: #4183c4;
             font-size: 2em;
             font-weight: bold;
             vertical-align: middle;
