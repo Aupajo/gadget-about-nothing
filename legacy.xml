@@ -11,7 +11,7 @@
   </ModulePrefs>
   <UserPref name="username" required="true" datatype="string" display_name="Account Name" />
   <UserPref name="show_month_name" default_value="true" datatype="bool" display_name="Show Month Name" />
-  <UserPref name="show_streaks" default_value="false" datatype="bool" display_name="Show Streaks" />
+  <UserPref name="show_streaks" default_value="true" datatype="bool" display_name="Show Streaks" />
   <Content type="html">
     <![CDATA[
       
