@@ -52,7 +52,7 @@
           }
         
         .marked {
-          background: url('mark.png') no-repeat center center;
+          background: url('http://labs.metanation.com/gadget-about-nothing/mark.png') no-repeat center center;
           text-indent: -9999px;
         }
         
