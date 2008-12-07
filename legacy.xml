@@ -23,7 +23,7 @@
         }
         
         h1 {
-          color: #b20000;
+          color: #00538d;
           font-size: 1.2em;
           margin: 0;
           text-transform: uppercase;
