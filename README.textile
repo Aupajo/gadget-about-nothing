@@ -4,6 +4,8 @@ An iGoogle gadget for displaying a user's "Calendar About Nothing":http://calend
 
 "Add to iGoogle":http://www.google.co.nz/ig/adde?hl=en&moduleurl=http://labs.metanation.com/gadget-about-nothing/legacy.xml&source=imag
 
+!http://labs.metanation.com/gadget-about-nothing/screenshot.gif!
+
 h2. Licence
 
 Released under the "MIT Licence":http://github.com/Aupajo/gadget-about-nothing/tree/master/LICENCE.
