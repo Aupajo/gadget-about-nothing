@@ -5,7 +5,9 @@
     description="Shows a user's open source contribution from Calendar About Nothing."
     author="Aupajo"
     author_email="pete@metanation.com"
-    height="60">
+    height="60"
+    screenshot="http://labs.metanation.com/gadget-about-nothing/screenshot.gif"
+    thumbnail="http://labs.metanation.com/gadget-about-nothing/logo.gif">
     <Require feature="dynamic-height"/>
     <Require feature="analytics" /> 
   </ModulePrefs>
