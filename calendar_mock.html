@@ -14,8 +14,8 @@
         }
         
         h1 {
-          color: #00538d;
-          font-size: 1em;
+          color: #b20000;
+          font-size: 1.2em;
           margin: 0;
           text-transform: uppercase;
           text-align: center;
@@ -45,6 +45,10 @@
         .marked {
           background: url('mark.png') no-repeat center center;
           text-indent: -9999px;
+        }
+        
+        .today {
+          color: #008000;
         }
           
         .outside_range {
@@ -92,8 +96,13 @@
     // Mock prefs
     var prefs = {
       username: "Aupajo",
+      show_month_name: true,
+      show_streaks: true,
       getString: function(key) {
         return this[key];
+      },
+      getBool: function(key) {
+        return this[key] == true;
       }
     };
     
@@ -134,6 +143,11 @@
     Date.prototype.getDaysInLastMonth = function() {
       var lastMonth = new Date(this.getYear(), this.getMonth() - 1);
       return lastMonth.getDaysInMonth();
+    }
+    
+    Date.prototype.isToday = function() {
+      // TODO implement
+      return false;
     }
     
     // Helpers
@@ -205,6 +219,10 @@
               classes.push("marked");
             }
             
+            if(new Date(this.year, this.month, day).isToday()) {
+              classes.push("today");
+            }
+            
             // Markup
             html += "<td"
             if(classes.length > 0) {
@@ -222,15 +240,23 @@
     }
     
     // Generate Calendar
-    var calendar = new MonthCalendar(11, 2008);
+    var calendar = new MonthCalendar(12, 2008);
     calendar.markDates(jsondata.days);
     
-    var html = '<h1>' + calendar.date.getMonthName() + ' ' +  calendar.year + '</h1>';
-    html += calendar.getHTML();
-    html += '<div class="current streak"><span class="type">Current Streak</span> ' + pluralize(jsondata.current_streak, 'day') + '</div>';
-    html += '<div class="longest streak"><span class="type">Longest Streak</span> ' + pluralize(jsondata.longest_streak, 'day') + '</div>';
+    var html = "";
     
-    updateContent(html)
+    if(prefs.getBool('show_month_name')) {
+      html += '<h1>' + calendar.date.getMonthName() + ' ' +  calendar.year + '</h1>';
+    }
+    
+    html += calendar.getHTML();
+    
+    if(prefs.getBool('show_streaks')) {
+      html += '<div class="current streak"><span class="type">Current Streak</span> ' + pluralize(jsondata.current_streak, 'day') + '</div>';
+      html += '<div class="longest streak"><span class="type">Longest Streak</span> ' + pluralize(jsondata.longest_streak, 'day') + '</div>';
+    }
+    
+    updateContent(html);
     
   </script>
     
