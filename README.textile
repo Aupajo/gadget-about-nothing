@@ -1,0 +1,9 @@
+h1. Gadget About Nothing
+
+An iGoogle gadget for displaying a user's "Calendar About Nothing":http://calendaraboutnothing.com.
+
+"Add to iGoogle":http://www.google.co.nz/ig/adde?hl=en&moduleurl=http://labs.metanation.com/gadget-about-nothing/legacy.xml&source=imag
+
+h2. Licence
+
+Released under the "MIT Licence":http://github.com/Aupajo/gadget-about-nothing/tree/master/LICENCE.
