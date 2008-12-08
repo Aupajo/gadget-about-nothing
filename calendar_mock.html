@@ -120,6 +120,7 @@
       "days": [
         "2008-11-30",
         "2008-11-02",
+        "2008-11-08",
         "2008-11-21",
         "2008-11-22",
         "2008-11-28"
@@ -171,8 +172,8 @@
       // Methods
       this.markDate = function(dateString) {
         var mark = dateString.split("-");
-        if(parseInt(mark[0]) == this.year && parseInt(mark[1]) - 1 == this.month) {
-          this.marks[parseInt(mark[2])] = true;
+        if(parseInt(mark[0], 10) == this.year && parseInt(mark[1], 10) - 1 == this.month) {
+          this.marks[parseInt(mark[2], 10)] = true;
         }
       }
       
