@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Module>
   <ModulePrefs directory_title="Calendar About Nothing"
-    title="__UP_username__'s Calendar About Nothing"
+    title="__UP_username__&apos;s Calendar About Nothing"
     description="Shows a user's open source contributions from Calendar About Nothing."
     author="Aupajo"
     author_email="pete@metanation.com"
