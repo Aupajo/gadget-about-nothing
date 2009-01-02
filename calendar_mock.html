@@ -115,7 +115,7 @@
     
     // Mock data
     var jsondata = {
-      "current_streak": 1,
+      "current_streak": null,
       "longest_streak": 2,
       "days": [
         "2008-11-30",
@@ -159,6 +159,10 @@
       string = '<span class="count">' + num + "</span> ";
       string += num == 1 ? word : (typeof pluralized_word == 'undefined' ? word + 's' : pluralized_word);
       return string;
+    }
+    
+    function parseStreak(streak) {
+      return streak == null ? 0 : streak;
     }
     
     // MonthCalendar Object
@@ -254,8 +258,10 @@
     html += calendar.getHTML();
     
     if(prefs.getBool('show_streaks')) {
-      html += '<div class="current streak"><span class="type">Current Streak</span> ' + pluralize(jsondata.current_streak, 'day') + '</div>';
-      html += '<div class="longest streak"><span class="type">Longest Streak</span> ' + pluralize(jsondata.longest_streak, 'day') + '</div>';
+      html += '<div class="current streak"><span class="type">Current Streak</span> ' +
+      pluralize(parseStreak(jsondata.current_streak), 'day') + '</div>';
+      html += '<div class="longest streak"><span class="type">Longest Streak</span> ' +
+      pluralize(parseStreak(jsondata.longest_streak), 'day') + '</div>';
     }
     
     updateContent(html);
